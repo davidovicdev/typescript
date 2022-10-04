@@ -23,7 +23,7 @@ class Product {
         this.description = description;
     }
     delete() {
-        console.log("RADI DELETE DUGME IZ KLASE");
+        console.log("RADI");
     }
 }
 var createButton = document.getElementById("createButton");
@@ -33,18 +33,18 @@ createButton === null || createButton === void 0 ? void 0 : createButton.addEven
     // VALIDATION
     //        DROPDOWN MENU (TYPES)
     var name = document.getElementById("name");
-    /* if (name?.value == "") {
-      alert("Please enter the product name");
-      return;
-    } */
+    if ((name === null || name === void 0 ? void 0 : name.value) == "") {
+        alert("Please enter the product name");
+        return;
+    }
     var price = document.getElementById("price");
     var type = document.getElementById("type");
     var valueId = type.selectedIndex;
     var valueText = type.options[valueId].text;
-    /* if (valueId == 0) {
-      alert("Please choose the type of product");
-      return;
-    } */
+    if (valueId == 0) {
+        alert("Please choose the type of product");
+        return;
+    }
     var description = document.getElementById("description")
         .value;
     const product = new Product(counter, name.value, valueText, price.value, description);
@@ -64,13 +64,12 @@ function setTable(products) {
     <td>${product.type}</td>
     <td>${product.price}</td>
     <td>${product.description}</td>
-    <td class='btn btn-danger' onClick='test(${product.id})'>DELETE</td>
+    <td class='btn btn-danger' onClick='delete2(${product.id})'>X</td>
     </tr>`;
     });
     counter++;
 }
-function test(id) {
-    console.log(products);
+function delete2(id) {
     for (let i = 0; i < products.length; i++) {
         if (products[i].id == id) {
             const index = products.indexOf(products[i], 0);
